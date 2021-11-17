@@ -66,7 +66,7 @@ Product findById(String id){
   //notifyListeners();
 //}
 Future<void>fov(String prodID, dynamic prodData,var filterByUser,var userId)async{
- var url=Uri.https('task1-c0839-default-rtdb.firebaseio.com','/Favorite/$userId/$prodID.json');
+ var url=Uri.https('shop-f8ed5-default-rtdb.firebaseio.com','/Favorite/$userId/$prodID.json');
    var favoriteResonse=await http.get(url);
    var favoriteData=json.decode(favoriteResonse.body); 
 
@@ -98,7 +98,7 @@ notifyListeners();
 }
 Future<void> fetchAndSetProducts([var filterByUser=2]) async{//basically it is an optional argument mean we can or canot send it 
  // print('kfkfkfkf$authToken');
-var url=Uri.https('task1-c0839-default-rtdb.firebaseio.com','/products.json');  
+var url=Uri.https('shop-f8ed5-default-rtdb.firebaseio.com','/products.json');  
 try{
 final response=await http.get(url);
 final extractedData=json.decode(response.body) as Map<String,dynamic>;
@@ -106,7 +106,7 @@ final extractedData=json.decode(response.body) as Map<String,dynamic>;
 if(extractedData==null){
   return;
 }
-  //  url=Uri.https('task1-c0839-default-rtdb.firebaseio.com','/Favorite/$userId.json');
+  //  url=Uri.https('shop-f8ed5-default-rtdb.firebaseio.com','/Favorite/$userId.json');
   // final favoriteResonse=await http.get(url);
   // final favoriteData=json.decode(favoriteResonse.body); 
 extractedData.forEach((prodID,prodData) {
@@ -126,7 +126,7 @@ catch(error){
 }
 
 Future<void> addProduct(Product product) async{
-final url=Uri.https('task1-c0839-default-rtdb.firebaseio.com','/products.json');  
+final url=Uri.https('shop-f8ed5-default-rtdb.firebaseio.com','/products.json');  
 //here we had two method of using these to return future as we are returning in editprod by using async and await if they are used then no need to type return expecitailly as async return future only
 //return http.post(url,body:json.encode(  await telling dart that it should wait ,await it wrap all code that come after it to then block (then ,catch error(can't use) bolck no needed now )invisibly
  try{
@@ -168,7 +168,7 @@ throw error;
 
 Future<void> updateProduct(String id,Product newProduct) async{
  final prodIndex= _item.indexWhere((prod)=>prod.id==id);
- final url=Uri.https('task1-c0839-default-rtdb.firebaseio.com','/products/$id.json');
+ final url=Uri.https('shop-f8ed5-default-rtdb.firebaseio.com','/products/$id.json');
 await http.patch(url,body:json.encode({
    'title':newProduct.title,
    'description':newProduct.description,
@@ -180,7 +180,7 @@ await http.patch(url,body:json.encode({
  notifyListeners();
 }
 Future<void> deleteProduct(String id)async{
-  final url=Uri.https('task1-c0839-default-rtdb.firebaseio.com','/products/$id.json');
+  final url=Uri.https('shop-f8ed5-default-rtdb.firebaseio.com','/products/$id.json');
   //we are storing its value in different variable because in dart it ill share same location and it took time to delete from server meanwhile we will delete from system memory  
   final existingProductIndex=_item.indexWhere((prod)=>prod.id==id);
   var existingProduct=_item[existingProductIndex];

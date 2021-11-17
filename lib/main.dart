@@ -23,9 +23,7 @@ class MyApp extends StatelessWidget {
       providers:[
          ChangeNotifierProvider.value(            //changenotifierwithproxyProvider is used when our provider is depend on some other provider and these other provider must declare before proxy provider and proxy provider must take it's name and name of that class which is linked to proxy itself 
            value: Auth(),
-         ),
-      
-          
+         ),    
           ChangeNotifierProxyProvider<Auth, Products>(
            
           update: (ctx, auth, previousProducts) => Products(
@@ -35,8 +33,6 @@ class MyApp extends StatelessWidget {
               ),
               create: (ctx)=>null,
         ),
-
-
      ChangeNotifierProvider( 
       create:(ctx)=>Cart(),
      ),

@@ -12,7 +12,7 @@ class ProductsGrid extends StatelessWidget {
  final productsData= Provider.of<Products>(context);
  final products=showfavs?productsData.favoriteItems:productsData.items;
     return GridView.builder(
-
+               
         padding: const EdgeInsets.all(10.0),
         itemCount: products.length,
         itemBuilder: (ctx, i) =>ChangeNotifierProvider.value( 
@@ -20,7 +20,7 @@ class ProductsGrid extends StatelessWidget {
           value: products[i],//i am noot using create method because it is harmful in case of grid because grid will forget data which is not on screen yet (like list)and what happend that provider will forget every new change which has happend so by using value it is smart to keep eye on changes 
           child:ProductItem(  //whenever any new product bult changenotifier will remove earlier once
               
-            ),
+           ),
         ),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,

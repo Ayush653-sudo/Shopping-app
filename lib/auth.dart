@@ -31,7 +31,7 @@ String get userId{
 
   Future<void> _authenticate(
       String email, String password, String urlSegment) async {
-final url=Uri.parse('https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyDbJ2OVlKt1V6ZCsCN6lKTEtp-FqIZH9fU');
+final url=Uri.parse('https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyBvaaBVCSesMsmOvRCO3SPO3MkA77QVI6A');
     try {
       final response = await http.post(
         url,
@@ -96,6 +96,7 @@ final url=Uri.parse('https://identitytoolkit.googleapis.com/v1/accounts:$urlSegm
 
  
  Future<void> logout()async{
+   print('hellow tomm');
     _token=null;
     _userId=null;
     _expiryDate=null;

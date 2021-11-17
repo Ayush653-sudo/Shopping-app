@@ -27,7 +27,7 @@ Future  <void> toggleFavoriteStatus(String userId)async{
     isFavorite=!isFavorite;
     print('ayush $userId');
      notifyListeners();
-     final url=Uri.https('task1-c0839-default-rtdb.firebaseio.com','/Favorite/$userId/$id.json');
+     final url=Uri.https('shop-f8ed5-default-rtdb.firebaseio.com','/Favorite/$userId/$id.json');
   try{
   final response= await http.put(url,body:json.encode({
     'isFavorite': isFavorite,
